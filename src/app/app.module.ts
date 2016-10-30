@@ -10,6 +10,9 @@ import { WorksComponent } from './works/works.component';
 import { routing } from './app.routing';
 import { LabsComponent } from './labs/labs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ActionBtnComponent } from './action-btn/action-btn.component';
+import { CameraChannelService } from './camera-channel.service';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     MenuComponent,
     WorksComponent,
     LabsComponent,
-    ProfileComponent
+    ProfileComponent,
+    ActionBtnComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { ProfileComponent } from './profile/profile.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [
+    CameraChannelService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

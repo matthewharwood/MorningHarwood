@@ -1,4 +1,7 @@
-import { Directive, ElementRef, HostListener, Input, Renderer,OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer,OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from "rxjs/Rx";
+
 import 'babylonjs';
 var BABYLON = require('babylonjs');
 
@@ -6,10 +9,17 @@ var BABYLON = require('babylonjs');
   selector: '[appBabylonWallpaper]'
 })
 export class BabylonWallpaperDirective implements OnInit {
+  private subscription: Subscription;
   private engine;
   private canvas;
+  param: string;
 
-  constructor(private el: ElementRef, private renderer: Renderer) {}
+  constructor(private el: ElementRef, private renderer: Renderer, private route: ActivatedRoute) {
+    console.log(route);
+    // this.subscription = route.subscribe((url) => console.log(url));
+
+  }
+
   ngOnInit() {
     this.canvas = this.renderer.selectRootElement(this.el.nativeElement);
     this.engine = new BABYLON.Engine(this.canvas, true);
@@ -20,33 +30,59 @@ export class BabylonWallpaperDirective implements OnInit {
     });
   }
 
-  createScene() {
-    // Now create a basic Babylon Scene object
-    var scene = new BABYLON.Scene(this.engine);
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
+  createScene() {
+    var scene = new BABYLON.Scene(this.engine);
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+    camera.setTarget(BABYLON.Vector3.Zero());
+
+    var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 0.5, 0), scene);
+
+
+    var sphere = BABYLON.Mesh.CreateSphere("sphere", 32, 2, scene);
+    var labs = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
+    var works = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
+    var profile = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
+    labs.position = new BABYLON.Vector3(0,40,-20);
+    works.position = new BABYLON.Vector3(40,40,-20);
+
+    var labCameraTarget = new BABYLON.Vector3(0, 45,-30);
+
+    var worksCameraTarget = new BABYLON.Vector3(40, 45,-30);
     scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
     scene.ambientColor = new BABYLON.Color3(1, 1, 1);
-    // camera
-    var camera = new BABYLON.AnaglyphArcRotateCamera("camera1",  -Math.PI/2, Math.PI/4, 20, new BABYLON.Vector3.Zero(), 0.033, scene);
-    camera.setPosition(new BABYLON.Vector3(-45,15, -70));
+
     camera.attachControl(this.canvas, true);
 
-    // lights
-    var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 0.5, 0), scene);
     light1.intensity = 1;
-    var sphere = BABYLON.Mesh.CreateSphere("sphere", 32, 2, scene);
-    console.log(BABYLON);
-    // var gradientMaterial = new BABYLON.GradientMaterial("grad", scene);
-    // gradientMaterial.topColor = BABYLON.Color3.Red(); // Set the gradient top color
-    // gradientMaterial.bottomColor = BABYLON.Color3.Blue(); // Set the gradient bottom color
-    // gradientMaterial.offset = 0.25;
 
-    // sphere.material = gradientMaterial;
 
-    scene.registerBeforeRender(function () {
+    var positionAnimation = new BABYLON.Animation(
+        "camPos",
+        "position",
+        30,
+        BABYLON.Animation.ANIMATIONTYPE_VECTOR3,
+        BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+    );
 
-    });
-    // Leave this function
+    var keys1 = [{
+      frame : 0,
+      value : camera.position
+    }, {
+      frame : 100,
+      value : worksCameraTarget
+    }];
+
+    positionAnimation.setKeys(keys1);
+    camera.animations.push(positionAnimation);
+
+    scene.beginAnimation(camera, 0, 100, false, 1);
+
+
+    scene.registerBeforeRender(() =>{});
     return scene;
   }
 }

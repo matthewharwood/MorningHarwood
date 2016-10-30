@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CameraChannelService } from '../camera-channel.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cameraChannel: CameraChannelService) { }
 
   ngOnInit() {
+    this.cameraChannel.cameraPosition.subscribe((type) => {
+      console.log(type);
+    });
   }
 
 }

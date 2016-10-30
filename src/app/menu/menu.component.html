@@ -1,5 +1,6 @@
+<app-action-btn></app-action-btn>
 <nav>
   <a [routerLink]="['/works']">Works</a>
-  <a [routerLink]="['/labs']">Labs</a>
+  <a [routerLink]="['/labs']" [queryParams]="{'x': 1}">Labs</a>
   <a [routerLink]="['/profile']">Profile</a>
 </nav>
