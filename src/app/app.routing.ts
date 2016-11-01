@@ -2,7 +2,7 @@
  * Created by user on 10/29/2016.
  */
 import { Routes, RouterModule } from '@angular/router';
-import { WorksComponent } from './works/works.component';
+import { WorkComponent } from './work/work.component';
 import { MenuComponent } from "./menu/menu.component";
 import { LabsComponent } from "./labs/labs.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -10,7 +10,7 @@ import { ProfileComponent } from "./profile/profile.component";
 const APP_ROUTES: Routes = [
     { path: '', component: MenuComponent },
     { path: 'menu', component: MenuComponent },
-    { path: 'works', component: WorksComponent },
+    { path: 'work', component: WorkComponent },
     { path: 'labs', component: LabsComponent},
     { path: 'profile', component: ProfileComponent }
 ];

@@ -3,10 +3,10 @@ import { CameraChannelService } from '../camera-channel.service';
 
 @Component({
   selector: 'app-works',
-  templateUrl: './works.component.html',
-  styleUrls: ['./works.component.scss'],
+  templateUrl: 'work.component.html',
+  styleUrls: ['work.component.scss'],
 })
-export class WorksComponent implements OnInit {
+export class WorkComponent implements OnInit {
 
   constructor(private cameraChannel: CameraChannelService) { }
 

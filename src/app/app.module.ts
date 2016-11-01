@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BabylonWallpaperDirective } from './babylon-wallpaper.directive';
 import { MenuComponent } from './menu/menu.component';
-import { WorksComponent } from './works/works.component';
+import { WorkComponent } from './work/work.component';
 import { routing } from './app.routing';
 import { LabsComponent } from './labs/labs.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -19,7 +19,7 @@ import { CameraChannelService } from './camera-channel.service';
     AppComponent,
     BabylonWallpaperDirective,
     MenuComponent,
-    WorksComponent,
+    WorkComponent,
     LabsComponent,
     ProfileComponent,
     ActionBtnComponent

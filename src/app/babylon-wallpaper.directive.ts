@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input, Renderer,OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from "rxjs/Rx";
+import { CameraChannelService } from './camera-channel.service';
+import { Subscription } from 'rxjs/Rx';
 
 import 'babylonjs';
 var BABYLON = require('babylonjs');
@@ -12,19 +12,20 @@ export class BabylonWallpaperDirective implements OnInit {
   private subscription: Subscription;
   private engine;
   private canvas;
-  param: string;
 
-  constructor(private el: ElementRef, private renderer: Renderer, private route: ActivatedRoute) {
-    console.log(route);
-    // this.subscription = route.subscribe((url) => console.log(url));
-
-  }
+  constructor(
+      private el: ElementRef,
+      private renderer: Renderer,
+      private cameraChannel:CameraChannelService
+  ) {}
 
   ngOnInit() {
     this.canvas = this.renderer.selectRootElement(this.el.nativeElement);
     this.engine = new BABYLON.Engine(this.canvas, true);
     var scene = this.createScene();
-
+    this.cameraChannel.cameraPosition.subscribe((type) => {
+      console.log('babylon', type);
+    });
     this.engine.runRenderLoop(() =>{
       scene.render();
     });

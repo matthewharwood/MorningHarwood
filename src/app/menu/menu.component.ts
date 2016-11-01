@@ -11,6 +11,7 @@ export class MenuComponent implements OnInit {
   constructor(private cameraChannel: CameraChannelService) { }
 
   ngOnInit() {
+    this.cameraChannel.setCamera('MENU');
     this.cameraChannel.cameraPosition.subscribe((type) => {
       console.log(type);
     });

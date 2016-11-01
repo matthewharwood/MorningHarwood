@@ -17,11 +17,6 @@ article, aside, figure, footer, header, menu, nav, section {
 }
 
 
-/*
-	Consistency fixes
-	adopted from http://necolas.github.com/normalize.css/
-*/
-
 article, aside, details, figcaption, figure,
 footer, header, nav, section, audio, canvas, video {
   display: block;
@@ -112,6 +107,14 @@ body {
 
 .ie {
 
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 html, body {
