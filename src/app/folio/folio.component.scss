@@ -1,0 +1,37 @@
+:host {
+  bottom: 0;
+  left: 72px;
+  position: fixed;
+  transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+
+  &::before {
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 28px;
+    background: tomato;
+    left: -28px;
+  }
+}
+
+h6, p {
+  font-size: 10px;
+}
+
+h6 {
+  color: tomato;
+  font-weight: 700;
+}
+
+p {
+  font-family: 'Noto Sans', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
