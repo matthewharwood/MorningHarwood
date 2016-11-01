@@ -1,0 +1,42 @@
+:host {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  width: 400px;
+  position: fixed;
+  top: 72px;
+  left: 72px;
+}
+
+dt {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+dd {
+  line-height: 2;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: .7px;
+  padding-left: 24px;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    content: '\2014';
+    color: #f7f7f7;
+  }
+
+  span {
+    font-style: italic;
+    cursor: pointer;
+
+    &:hover {
+      border-bottom: dotted 1px #f7f7f7;
+    }
+  }
+}

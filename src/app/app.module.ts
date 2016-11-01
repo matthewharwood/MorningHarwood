@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ActionBtnComponent } from './action-btn/action-btn.component';
 import { CameraChannelService } from './camera-channel.service';
 import { FolioComponent } from './folio/folio.component';
+import { RunningHeadComponent } from './running-head/running-head.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FolioComponent } from './folio/folio.component';
     LabsComponent,
     ProfileComponent,
     ActionBtnComponent,
-    FolioComponent
+    FolioComponent,
+    RunningHeadComponent
   ],
   imports: [
     BrowserModule,
