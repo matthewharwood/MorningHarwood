@@ -17,11 +17,11 @@ dt {
 dd {
   line-height: 2;
   font-size: 11px;
-  color: #fff;
   font-weight: 400;
   letter-spacing: .7px;
   padding-left: 24px;
   position: relative;
+  color: #fff;
 
   &::before {
     position: absolute;
@@ -31,12 +31,18 @@ dd {
     color: #f7f7f7;
   }
 
-  span {
+  a {
     font-style: italic;
     cursor: pointer;
+    color: #fff;
+    text-decoration: none;
 
     &:hover {
       border-bottom: dotted 1px #f7f7f7;
+    }
+
+    &:visited {
+     color: #fff;
     }
   }
 }
