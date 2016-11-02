@@ -5,11 +5,14 @@ import { Subscription } from 'rxjs/Rx';
 import 'babylonjs';
 var BABYLON = require('babylonjs');
 
+
+
 @Directive({
   selector: '[appBabylonWallpaper]'
 })
 export class BabylonWallpaperDirective implements OnInit {
   private subscription: Subscription;
+  private cameraName:string = 'MENU';
   private engine;
   private canvas;
 
@@ -20,13 +23,16 @@ export class BabylonWallpaperDirective implements OnInit {
   ) {}
 
   ngOnInit() {
+    var scene;
     this.canvas = this.renderer.selectRootElement(this.el.nativeElement);
     this.engine = new BABYLON.Engine(this.canvas, true);
-    var scene = this.createScene();
-    this.cameraChannel.cameraPosition.subscribe((type) => {
-      console.log('babylon', type);
+
+    this.cameraChannel.cameraPosition.subscribe((name) => {
+      this.cameraName = name;
+      scene = this.createScene();
     });
-    this.engine.runRenderLoop(() =>{
+
+    this.engine.runRenderLoop(() => {
       scene.render();
     });
   }
@@ -47,19 +53,15 @@ export class BabylonWallpaperDirective implements OnInit {
     var labs = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
     var works = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
     var profile = BABYLON.Mesh.CreateSphere('sphere', 32, 2, scene);
-    labs.position = new BABYLON.Vector3(0,40,-20);
-    works.position = new BABYLON.Vector3(40,40,-20);
 
-    var labCameraTarget = new BABYLON.Vector3(0, 45,-30);
 
-    var worksCameraTarget = new BABYLON.Vector3(40, 45,-30);
-    scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
-    scene.ambientColor = new BABYLON.Color3(1, 1, 1);
 
-    camera.attachControl(this.canvas, true);
-
-    light1.intensity = 1;
-
+    const CameraPositions = {
+      LAB: new BABYLON.Vector3(0, 45, -30),
+      WORK: new BABYLON.Vector3(40, 45, -30),
+      MENU: BABYLON.Vector3.Zero(),
+      PROFILE: new BABYLON.Vector3(40, 45, -30),
+    };
 
     var positionAnimation = new BABYLON.Animation(
         "camPos",
@@ -74,16 +76,28 @@ export class BabylonWallpaperDirective implements OnInit {
       value : camera.position
     }, {
       frame : 100,
-      value : worksCameraTarget
+      value : CameraPositions[this.cameraName]
     }];
 
     positionAnimation.setKeys(keys1);
     camera.animations.push(positionAnimation);
+    console.log('animations',camera.animations);
 
     scene.beginAnimation(camera, 0, 100, false, 1);
+    scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
+    scene.ambientColor = new BABYLON.Color3(1, 1, 1);
 
+    camera.attachControl(this.canvas, true);
+
+    light1.intensity = 1;
+    console.log(camera.position);
 
     scene.registerBeforeRender(() =>{});
     return scene;
+  }
+
+  setCameraPosition(scene, camera) {
+    console.log(scene, camera);
+
   }
 }

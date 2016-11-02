@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CameraChannelService } from '../camera-channel.service';
 
 @Component({
   selector: 'app-labs',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LabsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cameraChannel: CameraChannelService) { }
 
   ngOnInit() {
+    this.cameraChannel.setCamera('LAB');
   }
 
 }
