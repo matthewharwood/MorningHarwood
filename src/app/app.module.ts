@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { BabylonWallpaperDirective } from './babylon-wallpaper.directive';
 import { MenuComponent } from './menu/menu.component';
 import { WorkComponent } from './work/work.component';
 import { routing } from './app.routing';
@@ -14,19 +13,22 @@ import { ActionBtnComponent } from './action-btn/action-btn.component';
 import { CameraChannelService } from './camera-channel.service';
 import { FolioComponent } from './folio/folio.component';
 import { RunningHeadComponent } from './running-head/running-head.component';
+import { BonerComponent } from './boner/boner.component';
+import { ArticleHeaderComponent } from './article-header/article-header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BabylonWallpaperDirective,
     MenuComponent,
     WorkComponent,
     LabsComponent,
     ProfileComponent,
     ActionBtnComponent,
     FolioComponent,
-    RunningHeadComponent
+    RunningHeadComponent,
+    BonerComponent,
+    ArticleHeaderComponent
   ],
   imports: [
     BrowserModule,

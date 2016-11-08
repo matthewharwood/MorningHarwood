@@ -1,0 +1,22 @@
+$text: #555;
+$boner-width: 580px;
+$rotation: 30deg;
+:host {
+  background: $text;
+  width: $boner-width;
+  height: $boner-width/5;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -($boner-width/5);
+  margin-left:  -($boner-width/2);
+  -ms-transform: rotate(-$rotation);
+  -webkit-transform: rotate(-$rotation);
+  transform: rotate(-$rotation);
+}
+
+h1 {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}

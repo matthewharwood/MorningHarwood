@@ -1,3 +1,6 @@
+$text: #555;
+$hover: tomato;
+
 :host {
   position: fixed;
   bottom: 0;
@@ -22,14 +25,20 @@ nav {
     width: 100%;
     font-size: 82px;
     line-height: 1.4;
-    color: #fff;
+    color: $text;
     text-decoration: none;
     position: relative;
+    cursor: pointer;
+
+    :hover {
+      color: $hover;
+    }
 
     span {
       padding: 0 72px;
       position: relative;
     }
+
     &::before {
       position: absolute;
       bottom: 0;
@@ -37,7 +46,7 @@ nav {
       right: 72px;
       height: 2px;
       width: 100%;
-      background: #fff;
+      background: $text;
       content: '';
     }
   }
