@@ -1,14 +1,13 @@
 <div class="flex-child">
   <div class="title-wrapper">
     <h2>
-      Stanley
+      {{post.title}}
     </h2>
   </div>
-  <h3>
-    Web Application
+  <h3 *ngFor="let category of post.categories">
+    {{category}}
   </h3>
   <h4>
-    Worked collaboratively with an Art Director, Visual Designer & another Creative Developer to create a tool that
-    unifies what was otherwise a fragmented process on Nike Jordan.
+    {{post.paragraph}}
   </h4>
 </div>

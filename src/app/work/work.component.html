@@ -1,7 +1,9 @@
-<article>
-  <app-article-header>
+<article *ngFor="let post of posts">
+  <div class="container">
+    <app-article-header [post]="post">
 
-  </app-article-header>
-  <p></p>
-  <footer></footer>
+    </app-article-header>
+    <p></p>
+    <footer></footer>
+  </div>
 </article>

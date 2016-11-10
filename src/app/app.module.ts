@@ -15,6 +15,7 @@ import { FolioComponent } from './folio/folio.component';
 import { RunningHeadComponent } from './running-head/running-head.component';
 import { BonerComponent } from './boner/boner.component';
 import { ArticleHeaderComponent } from './article-header/article-header.component';
+import { WorkPostsService } from "./data/work-posts.service";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ArticleHeaderComponent } from './article-header/article-header.componen
     routing
   ],
   providers: [
-    CameraChannelService
+    CameraChannelService,
+    WorkPostsService
   ],
   bootstrap: [AppComponent]
 })

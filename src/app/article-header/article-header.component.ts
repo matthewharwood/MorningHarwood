@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { WorkPost } from "../data/work-post";
 
 @Component({
   selector: 'app-article-header',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-header.component.scss']
 })
 export class ArticleHeaderComponent implements OnInit {
-
+  @Input() post: WorkPost;
   constructor() { }
 
   ngOnInit() {
