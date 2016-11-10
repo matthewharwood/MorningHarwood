@@ -1,12 +1,19 @@
 <div class="flex-child">
+  <div class="block">
+    <h6 class="centered">
+      {{post.id}}
+    </h6>
+  </div>
   <div class="title-wrapper">
     <h2>
       {{post.title}}
     </h2>
   </div>
-  <h3 *ngFor="let category of post.categories">
-    {{category}}
-  </h3>
+  <div class="categories">
+    <h3 *ngFor="let category of post.categories">
+      {{category}}
+    </h3>
+  </div>
   <h4>
     {{post.paragraph}}
   </h4>

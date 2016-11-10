@@ -1,9 +1,17 @@
 <article *ngFor="let post of posts">
   <div class="container">
-    <app-article-header [post]="post">
+    <div class="justify">
+      <app-article-header [post]="post">
 
-    </app-article-header>
+      </app-article-header>
+    </div>
     <p></p>
-    <footer></footer>
+    <footer>
+      <div class="overview" *ngFor="let overview of post.overview">
+        <h4>{{overview.title}}</h4>
+        <h5>{{overview.subtitle}}</h5>
+        <p>{{overview.description}}</p>
+      </div>
+    </footer>
   </div>
 </article>

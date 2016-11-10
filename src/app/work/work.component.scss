@@ -6,20 +6,48 @@
   align-items: flex-start;
   flex-direction: column;
 }
+
 .container {
   background: #f7f7f7;
   height: 100%;
   width: 100%;
   position: relative;
+  flex-direction: column;
+  display: flex;
+}
+
+.justify {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
+
 article {
   height: 100%;
   width: 100%;
   display: flex;
-  padding: 32px;
+  padding:  0 32px 32px 32px;
   flex-direction: column;
   flex: 1 0 100%;
+
+  &:first-child {
+    padding: 32px;
+  }
+}
+
+footer {
+  align-content: flex-end;
+  display: flex;
+  padding: 0 72px 72px 72px;
+
+  .overview {
+    width: 33%;
+    padding: 0 32px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.8;
+  }
 }
