@@ -1,29 +1,53 @@
-$text: #555;
-$hover: tomato;
+@import '../../assets/css/_mixins';
+@import '../../assets/css/_variables';
+
+$text: $default-text;
+$hover: $red-mh;
+
 :host {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $sans-default-family;
   font-weight: 700;
   font-size: 14px;
-  width: 400px;
+  width: 72px;
+  height: 72px;
+  border-radius: 72px;
+  border: solid 1px darken($red-mh, 10%);
   position: fixed;
-  top: 72px;
-  left: 72px;
+  bottom: 16px;
+  right: 16px;
+  background: $red-mh url('../assets/chat-white.svg') no-repeat center center;
+  background-size: auto 50%;
+
+  @include bp(large) {
+    border-radius: 0;
+    border: none;
+    width: 400px;
+    height: auto;
+    top: 72px;
+    left: 72px;
+    right: auto;
+    bottom: auto;
+    background: none;
+  }
 }
 
 dt {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
+  @include accessible-hide();
 }
 
 dd {
+  @include hide();
   line-height: 2;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: .7px;
   padding-left: 24px;
   position: relative;
-  color: $text;
+
+  @include bp(large) {
+    @include show(block);
+    color: $text;
+  }
 
   &::before {
     position: absolute;

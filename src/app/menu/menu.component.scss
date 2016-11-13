@@ -1,46 +1,53 @@
 @import '../../assets/css/_mixins';
 @import '../../assets/css/_variables';
 
-$text: #555;
-$hover: tomato;
+$text: $default-text;
+$text-size: 36 * 1px;
+$hover: $red-mh;
 
 
 :host {
-  position: fixed;
-  padding: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
   align-items: flex-end;
+  bottom: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: 10;
 
   @include bp(large) {
-    max-width: 520px;
-    height: 100%;
     display: flex;
-    padding: 0 0 72px;
+    height: 100%;
+    max-width: 520px;
+    padding: 0 0 72px 0;
   }
 }
 
 nav {
-  display: flex;
-  flex-direction: column;
   align-content: flex-end;
   align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   width: 100%;
+  padding: 0 0 42px 42px;
 
   @include bp(large) {
+    padding-bottom: 0;
     text-align: right;
   }
 
   a {
-    width: 100%;
-    line-height: 1.4;
     color: $text;
-    text-decoration: none;
-    position: relative;
     cursor: pointer;
+    font-size: $text-size;
+    line-height: 1.6;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
 
     @include bp(large) {
+      line-height: 1.4;
       font-size: 82px;
     }
 
@@ -49,7 +56,6 @@ nav {
     }
 
     span {
-
       @include bp(large) {
         padding: 0 72px;
         position: relative;
@@ -57,30 +63,32 @@ nav {
     }
 
     &::before {
+      position: absolute;
+      content: '';
+      bottom: 0;
+      background: $text;
+      height: 1px;
 
       @include bp(large) {
-        position: absolute;
-        bottom: 0;
+        height: 2px;
         left: 72px;
         right: 72px;
-        height: 2px;
         width: 100%;
-        background: $text;
-        content: '';
       }
     }
   }
 }
 
 i {
+  @include hide();
   font-family: 'Noto Sans', sans-serif;
   font-style: normal;
   font-weight: 700;
   position: relative;
 
-
   @include bp(large) {
-    right: 72px;
+    @include show(inline-block);
     font-size: 12px;
+    right: 72px;
   }
 }

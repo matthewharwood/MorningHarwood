@@ -19,3 +19,15 @@
   top: -9999px !important;
   left: -9999px !important;
 }
+
+
+@mixin hide() {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin show($display) {
+
+  display: $display;
+  visibility: visible;
+}

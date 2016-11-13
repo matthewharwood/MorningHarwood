@@ -1,32 +1,33 @@
 @import '../../assets/css/_mixins';
 @import '../../assets/css/_variables';
 
-$text: #555;
+$text: $default-text;
 $boner-width: 580 * 1px;
 $boner-height: ($boner-width/5);
 $rotation: 30deg;
 
 
 :host {
-  @include bp(small) {
-    height: $boner-height/2;
-    margin-left: -($boner-width/4);
-    margin-top: -($boner-height*$phi);
-    width: $boner-width/2;
-  }
+  background: $text;
+  height: $boner-height/2;
+  left: 50%;
+  margin-left: -($boner-width/4);
+  margin-top: -($boner-height*($phi/2));
+  position: fixed;
+  top: 50%;
+  transform: rotate(-$rotation);
+  -ms-transform: rotate(-$rotation);
+  -webkit-transform: rotate(-$rotation);
+  width: $boner-width/2;
 
   @include bp(large) {
     background: $text;
-    width: $boner-width;
     height: $boner-height;
-    position: fixed;
     left: 50%;
-    top: 50%;
-    margin-top: -$boner-height;
     margin-left: -$boner-width/2;
-    -ms-transform: rotate(-$rotation);
-    -webkit-transform: rotate(-$rotation);
-    transform: rotate(-$rotation);
+    margin-top: -$boner-height;
+    top: 50%;
+    width: $boner-width;
   }
 }
 

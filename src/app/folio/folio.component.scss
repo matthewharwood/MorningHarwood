@@ -1,23 +1,36 @@
+@import '../../assets/css/_mixins';
+@import '../../assets/css/_variables';
+
+
+$red-folio: $red-mh;
+
 :host {
-  bottom: 0;
-  left: 72px;
+  left: 28px;
   position: fixed;
-  transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
-  -webkit-transform: rotate(-90deg);
-  transform-origin: 0 0;
-  -ms-transform-origin: 0 0;
-  -webkit-transform-origin: 0 0;
+  top: 16px;
+
+  @include bp(large) {
+    bottom: 0;
+    left: 72px;
+    top: auto;
+    transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+
 
   &::before {
-    position: absolute;
+    background: $red-folio;
     content: '';
-    width: 4px;
     height: 28px;
-    background: tomato;
     left: -28px;
+    position: absolute;
+    width: 4px;
   }
 }
 
@@ -26,12 +39,12 @@ h6, p {
 }
 
 h6 {
-  color: tomato;
+  color: $red-folio;
   font-weight: 700;
 }
 
 p {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $sans-default-family;
   font-style: italic;
   font-weight: 400;
 }
