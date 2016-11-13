@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WorkPost } from "../data/work-post";
+import { WorkPost } from "../data";
 
 @Component({
   selector: 'app-article-header',
@@ -10,7 +10,5 @@ export class ArticleHeaderComponent implements OnInit {
   @Input() post: WorkPost;
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,22 +1,35 @@
+@import '../../assets/css/_mixins';
+@import '../../assets/css/_variables';
+
 $text: #555;
-$boner-width: 580px;
+$boner-width: 580 * 1px;
+$boner-height: ($boner-width/5);
 $rotation: 30deg;
+
+
 :host {
-  background: $text;
-  width: $boner-width;
-  height: $boner-width/5;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -($boner-width/5);
-  margin-left:  -($boner-width/2);
-  -ms-transform: rotate(-$rotation);
-  -webkit-transform: rotate(-$rotation);
-  transform: rotate(-$rotation);
+  @include bp(small) {
+    height: $boner-height/2;
+    margin-left: -($boner-width/4);
+    margin-top: -($boner-height*$phi);
+    width: $boner-width/2;
+  }
+
+  @include bp(large) {
+    background: $text;
+    width: $boner-width;
+    height: $boner-height;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -$boner-height;
+    margin-left: -$boner-width/2;
+    -ms-transform: rotate(-$rotation);
+    -webkit-transform: rotate(-$rotation);
+    transform: rotate(-$rotation);
+  }
 }
 
 h1 {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
+  @include accessible-hide;
 }

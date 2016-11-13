@@ -1,62 +1,86 @@
+@import '../../assets/css/_mixins';
+@import '../../assets/css/_variables';
+
 $text: #555;
 $hover: tomato;
 
+
 :host {
   position: fixed;
+  padding: 0;
   bottom: 0;
   right: 0;
   z-index: 10;
-  width: 520px;
-  height: 100%;
-  display: flex;
   align-items: flex-end;
-  padding: 0 0 72px;
+
+  @include bp(large) {
+    max-width: 520px;
+    height: 100%;
+    display: flex;
+    padding: 0 0 72px;
+  }
 }
 
 nav {
   display: flex;
   flex-direction: column;
   align-content: flex-end;
-  text-align: right;
   align-items: stretch;
   width: 100%;
 
+  @include bp(large) {
+    text-align: right;
+  }
+
   a {
     width: 100%;
-    font-size: 82px;
     line-height: 1.4;
     color: $text;
     text-decoration: none;
     position: relative;
     cursor: pointer;
 
+    @include bp(large) {
+      font-size: 82px;
+    }
+
     :hover {
       color: $hover;
     }
 
     span {
-      padding: 0 72px;
-      position: relative;
+
+      @include bp(large) {
+        padding: 0 72px;
+        position: relative;
+      }
     }
 
     &::before {
-      position: absolute;
-      bottom: 0;
-      left: 72px;
-      right: 72px;
-      height: 2px;
-      width: 100%;
-      background: $text;
-      content: '';
+
+      @include bp(large) {
+        position: absolute;
+        bottom: 0;
+        left: 72px;
+        right: 72px;
+        height: 2px;
+        width: 100%;
+        background: $text;
+        content: '';
+      }
     }
   }
 }
 
 i {
   font-family: 'Noto Sans', sans-serif;
-  font-size: 12px;
   font-style: normal;
   font-weight: 700;
   position: relative;
-  right: 72px;
+
+
+  @include bp(large) {
+    right: 72px;
+    font-size: 12px;
+  }
 }

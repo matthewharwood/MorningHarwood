@@ -15,7 +15,9 @@ import { FolioComponent } from './folio/folio.component';
 import { RunningHeadComponent } from './running-head/running-head.component';
 import { BonerComponent } from './boner/boner.component';
 import { ArticleHeaderComponent } from './article-header/article-header.component';
-import { WorkPostsService } from "./data/work-posts.service";
+import { WorkPostsService } from "./work/work-posts.service";
+import { OverlayComponent } from './overlay/overlay.component';
+import { UiStateService } from "./ui-state.service";
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { WorkPostsService } from "./data/work-posts.service";
     FolioComponent,
     RunningHeadComponent,
     BonerComponent,
-    ArticleHeaderComponent
+    ArticleHeaderComponent,
+    OverlayComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { WorkPostsService } from "./data/work-posts.service";
   ],
   providers: [
     CameraChannelService,
-    WorkPostsService
+    WorkPostsService,
+    UiStateService
   ],
   bootstrap: [AppComponent]
 })

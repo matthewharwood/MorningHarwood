@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UiStateService } from "./ui-state.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app works!';
+  constructor(private uiStateService_:UiStateService) {}
+
+  ngOnInit() {
+    this.uiStateService_.modalState.subscribe((event)=> {
+      console.log(event, 'event');
+    });
+  }
 }

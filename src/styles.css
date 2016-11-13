@@ -30,13 +30,7 @@ footer, header, nav, section, audio, canvas, video {
   display: block;
 }
 
-html {
-  height: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
 
-body {min-height: 100%; font-size: 100%;}
 
 sub, sup {
   font-size: 75%;

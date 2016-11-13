@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CameraChannelService } from '../camera-channel.service';
-import { WorkPostsService } from "../data/work-posts.service";
-import { WorkPosts } from "../data/work-post";
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { WorkPostsService } from "./work-posts.service";
+import { UiStateService } from "../ui-state.service";
 
 @Component({
   selector: 'app-works',
@@ -9,16 +8,22 @@ import { WorkPosts } from "../data/work-post";
   styleUrls: ['work.component.scss'],
 })
 export class WorkComponent implements OnInit {
+  @HostBinding('class.overlay-open') modalState: string = 'MODAL_OPEN';
   public posts = [];
 
   constructor(
-      private cameraChannel: CameraChannelService,
-      private _workPostsService: WorkPostsService
-  ) { }
+      private _workPostsService: WorkPostsService,
+      private _uiStateService: UiStateService
+  ) {
+    this.modalState = this.modalState || undefined;
+  }
 
   ngOnInit() {
-    this.cameraChannel.setCamera('WORK');
     this.posts = this._workPostsService.getWorkData().data;
-    console.log(this.post);
+
+    this._uiStateService.modalState.subscribe((event)=> {
+      console.log(this.modalState);
+      this.modalState = event;
+    });
   }
 }

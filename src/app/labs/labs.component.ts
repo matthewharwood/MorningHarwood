@@ -14,4 +14,9 @@ export class LabsComponent implements OnInit {
     this.cameraChannel.setCamera('LAB');
   }
 
+
+  modalState(event) {
+    console.log('event', event);
+  }
+
 }

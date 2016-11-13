@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { POST_TABLE, WorkPosts } from './work-post';
+import { POST_TABLE, WorkPosts } from '../data';
 
 @Injectable()
 export class WorkPostsService {

@@ -5,6 +5,10 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
+  &.overlay-open {
+    overflow: hidden;
+  }
 }
 
 .container {
@@ -14,6 +18,11 @@
   position: relative;
   flex-direction: column;
   display: flex;
+
+  &.overlay-open * {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  }
 }
 
 .justify {
