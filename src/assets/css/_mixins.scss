@@ -27,7 +27,12 @@
 }
 
 @mixin show($display) {
-
   display: $display;
   visibility: visible;
+}
+
+@mixin center-flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

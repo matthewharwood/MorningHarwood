@@ -1,11 +1,12 @@
 <article *ngFor="let post of posts" >
-  <div class="container"  [ngClass]="{'overlay-open': modalState === 'MODAL_OPEN'}">
-    <div class="justify">
+  <div class="work-container"  [ngClass]="{'overlay-open': modalState === 'MODAL_OPEN'}">
+    <div class="article-header-wrapper">
       <app-article-header [post]="post">
 
       </app-article-header>
+      <a class="action-button" [routerLink]="[post.slug]">Learn More</a>
     </div>
-    <a [routerLink]="[post.slug]">Learn More</a>
+
     <footer>
       <div class="overview" *ngFor="let overview of post.overview">
         <h4>{{overview.title}}</h4>
